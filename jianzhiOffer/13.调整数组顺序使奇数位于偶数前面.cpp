@@ -25,5 +25,24 @@ public:
 
 /**
  * @brief 
- * TODO
+ * 新开临时数组的方法
+ * 时间复杂度是O(3n), 空间开销是O(n)
  */
+
+class Solution {
+public:
+    void reOrderArray(vector<int> &array) {
+        int odds = 0;
+        for(int i=0; i<array.size(); i++)
+            if(array[i]%2)  odds++;
+        vector<int> tmp_arr(array.size(), 0);
+        int i=0; int j= odds;
+        for(int k=0; k<array.size(); k++)
+        {
+            if(array[k]%2)  tmp_arr[i++] = array[k];
+            else    tmp_arr[j++] = array[k];
+        }
+        for(int i=0; i<array.size(); i++)
+            array[i] = tmp_arr[i];
+    }
+};
